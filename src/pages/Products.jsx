@@ -10,10 +10,10 @@ import ProductTable from "../components/ProductTable"
 
 
 
-const Firms = () => {
+const Products = () => {
 
   const { getStock } = useStockRequest()
-  const { firms } = useSelector((state) => state.stock)
+  const { products } = useSelector((state) => state.stock)
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
 
@@ -62,4 +62,4 @@ const Firms = () => {
   )
 }
 
-export default Firms
+export default Products

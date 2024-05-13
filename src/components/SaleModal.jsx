@@ -18,7 +18,9 @@ const style = {
   p: 4,
 }
 
-export default function ProductModal({ handleClose, open, info, setInfo }) {
+export default function SaleModal({ handleClose, open, info, setInfo }) {
+
+
   const { postStock, putStock } = useStockRequest()
 
   const handleChange = (e) => {
@@ -30,10 +32,10 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
 
     if (info._id) {
       //? put isteginin
-      putStock("firms", info)
+      putStock("sales", info)
     } else {
       //? post firma işlemi
-      postStock("firms", info)
+      postStock("sales", info)
     }
 
     //? modal ı kapıtıyoruz
@@ -56,7 +58,7 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
             onSubmit={handleSubmit}
           >
             <TextField
-              label="Firm Name"
+              label="Brand"
               name="name"
               id="name"
               type="text"
@@ -67,7 +69,7 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
             />
 
             <TextField
-              label="Phone"
+              label="Product"
               name="phone"
               id="phone"
               type="tel"
@@ -78,18 +80,28 @@ export default function ProductModal({ handleClose, open, info, setInfo }) {
             />
 
             <TextField
-              label="address"
-              name="address"
-              id="address"
+              label="Quantity"
+              name="quantity"
+              id="quantity"
               type="text"
               variant="outlined"
-              value={info.address}
+              value={info.quantity}
               onChange={handleChange}
               required
             />
 
+            <TextField
+              label="Price"
+              name="price"
+              id="price"
+              type="trxt"
+              variant="outlined"
+              value={info.price}
+              onChange={handleChange}
+              required
+            />
             <Button variant="contained" type="submit">
-              {info._id ? "UPDATE PRODUCT" : "ADD PRODUCT"}
+              {info._id ? "UPDATE SALE" : "ADD SALE"}
             </Button>
           </Box>
         </Box>
