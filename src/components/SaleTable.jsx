@@ -57,7 +57,7 @@ export default function SaleTable({handleOpen, setInfo}) {
       type: "actions",
       headerName: "Actions",
       getActions: (props) => {
-        console.log(props);
+       // console.log(props);
         return [
           <GridActionsCellItem
             icon={<DeleteForeverIcon />}
@@ -88,7 +88,7 @@ export default function SaleTable({handleOpen, setInfo}) {
             },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5, 10, 25, 50, 100]}
         checkboxSelection
         disableRowSelectionOnClick
         getRowId={getRowId}

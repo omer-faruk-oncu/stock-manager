@@ -51,8 +51,10 @@ const useStockRequest = () => {
     dispatch(fetchStart())
     try {
       await axiosToken.delete(`/${path}/${id}`)
+      toastSuccessNotify(`${path} basariliyla silinmiştir.`)
       getStock(path)
     } catch (error) {
+      toastErrorNotify(`${path} silinememiştir.`)
       dispatch(fetchFail())
       console.log(error)
     }
