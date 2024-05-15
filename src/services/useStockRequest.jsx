@@ -42,6 +42,7 @@ const useStockRequest = () => {
       const stockData = data.data
       dispatch(getStockSuccess({ stockData, path }))
     } catch (error) {
+      //toastErrorNotify(`${path} verileri çekilememiştir.`)
       dispatch(fetchFail())
       console.log(error)
     }
