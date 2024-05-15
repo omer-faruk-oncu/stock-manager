@@ -1,55 +1,50 @@
-import { useEffect, useState } from "react";
-
-import useStockRequest from "../services/useStockRequest";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import ProductModal from "../components/ProductModal";
-import ProductTable from "../components/ProductTable";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react"
+import useStockRequest from "../services/useStockRequest"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
+import ProductModal from "../components/ProductModal"
+import ProductTable from "../components/ProductTable"
+import { useSelector } from "react-redux"
 import TableSkeleton, {
   ErrorMessage,
   NoDataMessage,
-} from "../components/DataFetchMessages";
+} from "../components/DataFetchMessages"
 
 const Products = () => {
-  const { getStock } = useStockRequest();
-  const { error, loading, products } = useSelector((state) => state.stock);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const { getStock } = useStockRequest()
+  const { error, loading } = useSelector((state) => state.stock)
+  const { products } = useSelector((state) => state.stock)
 
-  const initialState = { categoryId: "", brandId: "", name: "" };
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
 
-  const [info, setInfo] = useState(initialState);
+  const initialState = { categoryId: "", brandId: "", name: "" }
+  const [info, setInfo] = useState(initialState)
 
   const handleClose = () => {
-    setOpen(false);
-    setInfo(initialState);
-  };
-
+    setOpen(false)
+    setInfo(initialState)
+  }
   useEffect(() => {
-    getStock("products");
-    getStock("categories");
-    getStock("brands");
-  }, []);
+    getStock("products")
+    getStock("categories")
+    getStock("brands")
+  }, [])
 
   return (
     <div>
       <Typography variant="h4" color={"error"} mb={2}>
-        Product
+        Products
       </Typography>
 
-      <Button
-        variant="contained"
-        onClick={handleOpen}
-        sx={{ mb: 3 }}
-        disabled={error}
-      >
+      <Button variant="contained" onClick={handleOpen} disabled={error}>
         New Product
       </Button>
+
       {loading && <TableSkeleton />}
       {error && <ErrorMessage />}
-      {!error && !loading && products.length > 0 && <ProductTable />}
-      {!error && !products.length && <NoDataMessage />}
+      {!loading && products.length > 0 && <ProductTable />}
+      {!loading && !products.length && <NoDataMessage />}
 
       <ProductModal
         handleClose={handleClose}
@@ -58,7 +53,7 @@ const Products = () => {
         setInfo={setInfo}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

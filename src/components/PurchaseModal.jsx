@@ -1,18 +1,18 @@
+import React from "react"
 import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
 import { modalStyle } from "../styles/globalStyles"
 import TextField from "@mui/material/TextField"
 import { Button } from "@mui/material"
-
+import useStockRequest from "../services/useStockRequest"
 import { MenuItem, Select, InputLabel, FormControl } from "@mui/material"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import useStockRequest from "../services/useStockRequest"
 
-export default function SaleModal({ open, handleClose, info, setInfo }) {
+export default function PurchaseModal({ open, handleClose, info, setInfo }) {
   const navigate = useNavigate()
   const { postStock, putStock } = useStockRequest()
-  const { products, brands } = useSelector((state) => state.stock)
+  const { firms, products, brands } = useSelector((state) => state.stock)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -23,14 +23,15 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
     e.preventDefault()
 
     if (info._id) {
-      putStock("sales", info)
+      putStock("purchases", info)
     } else {
-      postStock("sales", info)
+      postStock("purchases", info)
     }
 
     handleClose()
   }
 
+  console.log(info)
   return (
     <div>
       <Modal
@@ -46,6 +47,29 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
             onSubmit={handleSubmit}
           >
             <FormControl>
+              <InputLabel variant="outlined" id="firmId">
+                Firm
+              </InputLabel>
+              <Select
+                labelId="firmId"
+                label="Firm"
+                name="firmId"
+                value={info?.firmId?._id || info?.firmId}
+                onChange={handleChange}
+                required
+              >
+                <MenuItem onClick={() => navigate("/stock/firms")}>
+                  Add New Firm
+                </MenuItem>
+                <hr />
+                {firms?.map((item) => (
+                  <MenuItem key={item._id} value={item._id}>
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl>
               <InputLabel variant="outlined" id="brand-select-label">
                 Brand
               </InputLabel>
@@ -58,7 +82,7 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
                 onChange={handleChange}
                 required
               >
-                <MenuItem onClick={() => navigate("/stock/brands/")}>
+                <MenuItem onClick={() => navigate("/stock/brands")}>
                   Add New Brand
                 </MenuItem>
                 <hr />
@@ -120,7 +144,7 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
               required
             />
             <Button type="submit" variant="contained" size="large">
-              {info?._id ? "Update Sale" : "Add New Sale"}
+              {info?._id ? "Update Purchase" : "Add New Purchase"}
             </Button>
           </Box>
         </Box>
