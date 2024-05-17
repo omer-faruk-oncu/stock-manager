@@ -10,7 +10,7 @@ import TableSkeleton, {
 import { useSelector } from "react-redux"
 
 const Purchases = () => {
-  const { getStock } = useStockRequest()
+  const { getStock, getProPurBraFirmStock } = useStockRequest()
   const { error, loading, purchases } = useSelector((state) => state.stock)
 
   const [open, setOpen] = useState(false)
@@ -35,6 +35,8 @@ const Purchases = () => {
     getStock("purchases")
     getStock("brands")
     getStock("firms")
+
+    getProPurBraFirmStock()
   }, []) // eslint-disable-line
 
   return (
