@@ -31,7 +31,7 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
     handleClose()
   }
 
-  console.log(info)
+  //console.log(info)
   return (
     <div>
       <Modal
@@ -47,11 +47,11 @@ export default function PurchaseModal({ open, handleClose, info, setInfo }) {
             onSubmit={handleSubmit}
           >
             <FormControl>
-              <InputLabel variant="outlined" id="firmId">
+              <InputLabel variant="outlined" id="firm-select-label">
                 Firm
               </InputLabel>
               <Select
-                labelId="firmId"
+                labelId="firm-select-label"
                 label="Firm"
                 name="firmId"
                 value={info?.firmId?._id || info?.firmId}

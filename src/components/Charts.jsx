@@ -1,22 +1,22 @@
-import { AreaChart } from "@tremor/react";
-import { useSelector } from "react-redux";
+import { AreaChart } from "@tremor/react"
+import { useSelector } from "react-redux"
 
 const dataFormatter = (number) =>
-  `$${Intl.NumberFormat("us").format(number).toString()}`;
+  `$${Intl.NumberFormat("us").format(number).toString()}`
 
 const Charts = () => {
-  const { sales, purchases } = useSelector((state) => state.stock);
+  const { sales, purchases } = useSelector((state) => state.stock)
 
   const salesData = sales?.map((item) => ({
     date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
     amount: item.amount,
-  }));
+  }))
+
   const purchasesData = purchases?.map((item) => ({
     date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
     amount: item.amount,
-  }));
-  console.log(salesData);
-
+  }))
+  console.log(salesData)
   return (
     <>
       <AreaChart
@@ -28,6 +28,7 @@ const Charts = () => {
         valueFormatter={dataFormatter}
         yAxisWidth={60}
       />
+
       <AreaChart
         className="h-80"
         data={purchasesData}
@@ -38,7 +39,6 @@ const Charts = () => {
         yAxisWidth={60}
       />
     </>
-  );
-};
-
-export default Charts;
+  )
+}
+export default Charts

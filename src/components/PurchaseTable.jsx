@@ -12,6 +12,7 @@ const PurchaseTable = ({ setInfo, handleOpen }) => {
 
   const getRowId = (row) => row._id
 
+  console.log(purchases)
   const columns = [
     {
       field: "createdAt",
@@ -20,7 +21,7 @@ const PurchaseTable = ({ setInfo, handleOpen }) => {
       headerAlign: "center",
       align: "center",
       renderCell: ({ row }) => {
-        return new Date(row.createdAt).toLocaleString("tr-TR")
+        return new Date(row.createdAt).toLocaleString("de-DE")
       },
     },
     {
