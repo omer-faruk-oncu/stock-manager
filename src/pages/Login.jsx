@@ -1,20 +1,20 @@
-import Avatar from "@mui/material/Avatar"
-import Container from "@mui/material/Container"
-import Grid from "@mui/material/Grid"
-import Typography from "@mui/material/Typography"
-import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
-import { Link } from "react-router-dom"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import { Button } from "@mui/material"
-import { Formik, Form } from "formik"
-import { object, string } from "yup"
+import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/image.jpg";
+import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
+import { Formik, Form } from "formik";
+import { object, string } from "yup";
 // import { login } from "../services/useApiRequest"
-import useApiRequest from "../services/useApiRequest"
+import useApiRequest from "../services/useApiRequest";
 
 const Login = () => {
-  const { login } = useApiRequest()
+  const { login } = useApiRequest();
 
   const loginSchema = object({
     email: string()
@@ -31,7 +31,7 @@ const Login = () => {
         /[@$!%*?&]+/,
         "Şifre en az bir özel karakter(@$!%*?&) içermelidir."
       ),
-  })
+  });
 
   return (
     <Container maxWidth="lg">
@@ -46,7 +46,7 @@ const Login = () => {
       >
         <Grid item xs={12} mb={3}>
           <Typography variant="h3" color="primary" align="center">
-            STOCK APP
+            STOCK MANAGER
           </Typography>
         </Grid>
 
@@ -74,15 +74,9 @@ const Login = () => {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              //TODO
-              //? POST (Login)
-              //? Toastify
-              //? Global state güncellenmesi
-              //? form resetleme
-              //? navigate
-              login(values)
-              actions.resetForm()
-              actions.setSubmitting(false) //? isSubmitting
+              login(values);
+              actions.resetForm();
+              actions.setSubmitting(false); 
             }}
           >
             {({
@@ -143,7 +137,7 @@ const Login = () => {
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import Button from "@mui/material/Button"
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import Modal from "@mui/material/Modal"
-import useStockRequest from "../services/useStockRequest"
+import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Modal from "@mui/material/Modal";
+import useStockRequest from "../services/useStockRequest";
 
 const style = {
   position: "absolute",
@@ -16,7 +16,7 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-}
+};
 
 export default function FirmModal({ handleClose, open, info, setInfo }) {
   //   const [info, setInfo] = useState({
@@ -26,28 +26,25 @@ export default function FirmModal({ handleClose, open, info, setInfo }) {
   //     address: "",
   //   })
 
-  const { postStock, putStock } = useStockRequest()
+  const { postStock, putStock } = useStockRequest();
 
   const handleChange = (e) => {
-    setInfo({ ...info, [e.target.name]: e.target.value })
-  }
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (info._id) {
-      //? put isteginin
-      putStock("firms", info)
+      putStock("firms", info);
     } else {
-      //? post firma işlemi
-      postStock("firms", info)
+      postStock("firms", info);
     }
 
-    //? modal ı kapıtıyoruz
-    handleClose()
-  }
+    handleClose();
+  };
 
-  console.log(info)
+  console.log(info);
   return (
     <div>
       <Modal
@@ -112,5 +109,5 @@ export default function FirmModal({ handleClose, open, info, setInfo }) {
         </Box>
       </Modal>
     </div>
-  )
+  );
 }

@@ -17,6 +17,7 @@ const Charts = () => {
     amount: item.amount,
   }))
   console.log(salesData)
+  console.log(purchasesData )
   return (
     <>
       <AreaChart

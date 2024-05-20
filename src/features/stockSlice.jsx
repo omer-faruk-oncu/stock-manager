@@ -28,7 +28,7 @@ const stockSlice = createSlice({
     //   state.sales = payload
     // },
 
-    //? action.payload.path
+  
     // getStockSuccess: (state, action) => {
     //   state.loading = false
     //   state[action.payload.path] = action.payload.stockData
