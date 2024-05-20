@@ -1,3 +1,7 @@
+
+
+https://stock-manager-oncu.netlify.app
+
 ## `Kurulum`
 
 ```
