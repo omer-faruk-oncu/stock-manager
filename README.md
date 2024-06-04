@@ -1,5 +1,6 @@
 
-https://github.com/omer-faruk-oncu/stock-manager/assets/154313389/6e0013ad-e498-49ef-b4aa-ec34a7ac7829
+![stock-maanger](https://github.com/omer-faruk-oncu/stock-manager/assets/154313389/86ec12a0-5436-44ea-9d52-e6f718b3f5fe)
+
 
 https://stock-manager-oncu.netlify.app
 
